@@ -209,6 +209,17 @@ class TC_RubyPodder < Test::Unit::TestCase
     assert(@rp.already_downloaded(url3, guid1), "url3 should be already downloaded because it is using giud1")
   end
 
+  def test_already_downloaded_no_guid
+    url = "http://www.google.com/index.html"
+    guid = nil
+    assert(!@rp.already_downloaded(url, guid), "url should not be already downloaded before download of url")
+    @rp.download(url, guid)
+    File.open( @rp.log_file ) do |f|
+      return if (f.any? { |line| line =~ /ERROR/ }) # Don't test this case if no internet connection
+    end
+    assert(@rp.already_downloaded(url, guid), "url should be already downloaded after download of url")
+  end
+
   def test_download_omits_done_items
     dest_file = @rp.date_dir + "/" + "index.html"
     system("rm -rf " + dest_file)

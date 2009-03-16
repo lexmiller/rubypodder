@@ -84,18 +84,12 @@ class RubyPodder
     rio(@done_file) << "#{url}\n"
   end
 
-  def already_downloaded(url, guid)
-    if guid
-      previously_downloaded = [url.strip.downcase, guid.strip.downcase]
-      File.open(@done_file).detect do |line|
-        previously_downloaded.include?(line.strip.downcase)
-      end
-    else
-      File.open(@done_file).detect do |line|
-        url.strip.downcase == line.strip.downcase
-      end
-    end
 
+  def already_downloaded(url, guid)
+    previously_downloaded = [url, guid].compact.map{ |s| s.strip.downcase }
+    File.open(@done_file).detect do |line|
+      previously_downloaded.include?(line.strip.downcase)
+    end
   end
 
   def download(url, guid)

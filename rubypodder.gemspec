@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = "rubypodder"
-  s.version = "1.0.2"
-  s.date = "2009-01-25"
+  s.version = "1.0.3"
+  s.date = "2009-03-15"
   s.author = "Lex Miller"
   s.email = "lex.miller @nospam@ gmail.com"
   s.summary = "A podcast aggregator without an interface"
