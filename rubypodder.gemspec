@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.author = "Lex Miller"
   s.email = "lex.miller @nospam@ gmail.com"
   s.summary = "A podcast aggregator without an interface"
-  s.files = Dir['lib/*.rb', 'tests/*', 'Rakefile'].to_a
+  s.files = ["lib/rubypodder.rb", "tests/tc_rubypodder.rb", "tests/tc_stdout.rb", "tests/ts_rubypodder.rb", "Rakefile"]
   s.require_path = "lib"
   s.bindir = "bin"
   s.executables = ["rubypodder"]
